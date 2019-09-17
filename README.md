@@ -1,2 +1,2 @@
 # BUA Labs
-bualabs.com website 
+[bualabs.com](https://www.bualabs.com/) website 
