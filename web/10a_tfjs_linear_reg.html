@@ -1,11 +1,9 @@
 <html>
     <head>
-
         <title>10a_tfjs_linear_reg</title>
     </head>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
     <script lang="js" >
-        
         async function doTraining(model) {
             const history = await model.fit(xs, ys, {epochs: 500, callbacks:{
                 onEpochEnd: async(epoch, logs) => {
@@ -26,7 +24,6 @@
         doTraining(model).then(() => {
             alert(model.predict(tf.tensor2d([10], [1, 1])))
         })
-
     </script>
     <body>
         Hello tensorflow js
