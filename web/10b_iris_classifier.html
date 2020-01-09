@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>10b Iris Classifier</title>
+    </head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    
+    <script lang="js">
+
+        const model = tf.sequential();
+
+        async function run() {
+            const csvUrl = 'data/iris.csv';
+            const trainingData = tf.data.csv(csvUrl, {
+                columnConfigs: {
+                    species: {
+                        isLabel: true
+                    }
+                }
+            });
+
+            const numOfFeatures = (await trainingData.columnNames()).length -1;
+            const numOfSamples = 150;
+            const convertedData = trainingData.map(({xs, ys}) => {
+                const labels = [
+                    ys.species == 'setosa' ? 1 : 0, 
+                    ys.species == 'virginica' ? 1 : 0, 
+                    ys.species == 'versicolor' ? 1 : 0, 
+                ]
+                return { xs: Object.values(xs), ys: Object.values(labels)};    
+            }).batch(16);
+
+            model.add(tf.layers.dense({inputShape: [numOfFeatures], activation: 'relu', units: 4}))
+            model.add(tf.layers.dense({activation: 'softmax', units: 3}))
+
+            model.compile({loss: 'categoricalCrossentropy', optimizer: tf.train.adam(0.06)});
+            model.summary()
+
+            await model.fitDataset(convertedData, 
+                    {epochs: 50, 
+                     callbacks: {
+                         onEpochEnd: async(epoch, logs) => {
+                             console.log("Epoch: " + epoch + ", Loss: " + logs.loss);                             
+                         }
+                    }});
+            alert("Finished training model.")
+        }
+
+        function testPredict(idx) {
+            xs = [[4.3, 3,   1.1, 0.1], 
+                  [6.5, 3,   5.8, 2.2],
+                  [6.6, 2.9, 4.6, 1.3],];
+            testVal = tf.tensor2d(xs[idx], [1, 4]);
+            
+            const prediction = model.predict(testVal);
+            const pIndex = tf.argMax(prediction, axis=1).dataSync();
+            classNames = ["Setosa", "Virginica", "Versicolor"]
+
+            alert(classNames[pIndex] + prediction)
+        }
+
+        run();
+
+    </script>
+    
+    
+    <body>
+        <h1>10b Iris Classifier</h1>
+        <div>Please wait until model finish training.</div>
+        
+        <button id="b0" name="b0" onclick="testPredict(0)">Test Setosa</button>
+        <button id="b1" name="b1" onclick="testPredict(1)">Test Virginica</button>
+        <button id="b2" name="b2" onclick="testPredict(2)">Test Versicolor</button>
+    </body>
+</html>
