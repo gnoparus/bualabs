@@ -55,7 +55,7 @@
             const pIndex = tf.argMax(prediction, axis=1).dataSync();
             classNames = ["Setosa", "Virginica", "Versicolor"]
 
-            alert(classNames[pIndex] + prediction)
+            alert(classNames[pIndex] + "\n" + prediction)
         }
 
         run();
