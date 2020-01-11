@@ -5,7 +5,6 @@ var rawImage;
 var model;
 
 function getModel() {
-    
     model = tf.sequential();
 	model.add(tf.layers.conv2d({inputShape: [28, 28, 1], kernelSize: 3, filters: 8, activation: 'relu'}));
 	model.add(tf.layers.maxPooling2d({poolSize: [2, 2]}));
@@ -119,7 +118,7 @@ async function run() {
     await train(model, data);
     await model.save('downloads://my_model');
     init();
-    alert("Training is done, try classifying your drawings!");
+    alert("Training is done, try classifying your fashion drawings!");
 }
 
 document.addEventListener('DOMContentLoaded', run);
