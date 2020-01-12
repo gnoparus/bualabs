@@ -12,7 +12,8 @@ const threshold = 0.9;
 
 toxicity.load(threshold).then(model => {
 
-    const sentences = ['Arthur, you are useless.'];
+    const sentences = ['You are perfect.'];
+    console.log(sentences);
 
     model.classify(sentences).then(predictions => {
 
