@@ -1,17 +1,21 @@
 <html>
 <head>
+    <title>10h Linear Converted Python</title>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>   
-<script>
-    async function run(){
-        const MODEL_URL = 'model/linear_reg_model.json';        
-        const model = await tf.loadLayersModel(MODEL_URL);
-        console.log(model.summary());
-
-        const input = tf.tensor2d([20.0], [1,1]);
-        const result = model.predict(input);
-        alert(result)
-	}
-</script>
 </head> 
-<body></body>   
+<body>
+    <h1>10h Linear Converted Python</h1>
+</body>   
+<script>
+        async function run(){
+            const MODEL_URL = 'model/linear_reg_model.json';        
+            const model = await tf.loadLayersModel(MODEL_URL);                
+            model.summary()
+            
+            const input = tf.tensor2d([20.0], [1,1]);
+            const result = model.predict(input);
+            alert(result)
+        }
+        run();
+    </script>
 </html>
