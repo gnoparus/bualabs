@@ -5,25 +5,39 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script> 
 
-</head>
-<body>
-    <h1>Object Detection (coco-ssd)</h1>
-    <img id="img" src="img/img01.jpg"></img>
-    <div id="output" style="font-family:courier;font-size:24px;height:300px"></div>
-</body>
 <script>
-    const img = document.getElementById('img');
+    window.onload = function() {
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext('2d');  
+    var img = document.getElementById("canvasimg");  
     const outp = document.getElementById('output');
+    context.drawImage(img, 0, 0);  
 
     cocoSsd.load().then(model => {
         model.detect(img).then(predictions => {
             console.log(predictions);
             for(var i = 0; i<predictions.length; i++){
-                outp.innerHTML += "<br/>" + predictions[i].bbox + 
-                " : " + predictions[i].class + 
-                " : " + predictions[i].score;
+                bbox = predictions[i].bbox
+                outp.innerHTML += "<br/>" + predictions[i].class + " : Score = " + predictions[i].score + " : bbox = " + bbox;
+                context.beginPath();
+                context.rect(bbox[0], bbox[1], bbox[2], bbox[3]);
+                context.lineWidth = 3;
+                context.strokeStyle = 'green';
+                context.stroke();
+                context.fillStyle = "green";
+                context.fillText(predictions[i].class, bbox[0]+4, bbox[1]+12);
             }
         });
     });
+
+  }
 </script>
+
+</head>
+<body>
+    <h1>Object Detection (coco-ssd)</h1>
+    <div id="output" style="position:absolute;top:440; font-family:courier;font-size:24px;height:300px"></div>
+    <canvas id="canvas" width="320" height="320" style="position:absolute;top:100;left:100;border:1px solid;"></canvas>
+    <img id="canvasimg" src="img/img02.jpg" style="position:absolute;top:50%;left:52%;width:320;height:320;display:none;" />                
+</body>
 </html>
