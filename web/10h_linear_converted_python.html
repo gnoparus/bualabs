@@ -11,10 +11,11 @@
             const MODEL_URL = 'model/linear_reg_model.json';        
             const model = await tf.loadLayersModel(MODEL_URL);                
             model.summary()
-            
+
             const input = tf.tensor2d([20.0], [1,1]);
             const result = model.predict(input);
             alert(result)
+            console.log("Result: " + result)
         }
         run();
     </script>
