@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Object Detection (coco-ssd)</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script> 
+
+</head>
+<body>
+    <h1>Object Detection (coco-ssd)</h1>
+    <img id="img" src="img/img01.jpg"></img>
+    <div id="output" style="font-family:courier;font-size:24px;height:300px"></div>
+</body>
+<script>
+    const img = document.getElementById('img');
+    const outp = document.getElementById('output');
+
+    cocoSsd.load().then(model => {
+        model.detect(img).then(predictions => {
+            console.log(predictions);
+            for(var i = 0; i<predictions.length; i++){
+                outp.innerHTML += "<br/>" + predictions[i].bbox + 
+                " : " + predictions[i].class + 
+                " : " + predictions[i].score;
+            }
+        });
+    });
+</script>
+</html>
