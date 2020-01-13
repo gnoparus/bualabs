@@ -8,9 +8,10 @@
 <script>
     window.onload = function() {
     var canvas = document.getElementById("canvas");
-    var context = canvas.getContext('2d');  
     var img = document.getElementById("canvasimg");  
     const outp = document.getElementById('output');
+
+    var context = canvas.getContext('2d');  
     context.drawImage(img, 0, 0);  
 
     cocoSsd.load().then(model => {
@@ -37,7 +38,7 @@
 <body>
     <h1>Object Detection (coco-ssd)</h1>
     <div id="output" style="position:absolute;top:440; font-family:courier;font-size:24px;height:300px"></div>
-    <canvas id="canvas" width="320" height="320" style="position:absolute;top:100;left:100;border:1px solid;"></canvas>
-    <img id="canvasimg" src="img/img02.jpg" style="position:absolute;top:50%;left:52%;width:320;height:320;display:none;" />                
+    <canvas id="canvas" width="320" height="320" style="position:absolute;top:100;left:100;border:0px solid;"></canvas>
+    <img id="canvasimg" src="img/img01.jpg" style="position:absolute;top:50%;left:52%;width:320;height:320;display:none;" />                
 </body>
 </html>
