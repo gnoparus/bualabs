@@ -52,8 +52,13 @@ class Camera2BasicFragment : Fragment(), View.OnClickListener,
     private var rgbBytes: IntArray? = null
     private lateinit var previewReader: ImageReader
     private val mInputSize = 224
-    private val mModelPath = "mobilenet_v1_1.0_224_quant.tflite"
-    private val mLabelPath = "labels_mobilenet_quant_v1_224.txt"
+//    // MobileNet Model and Labels
+//    private val mModelPath = "mobilenet_v1_1.0_224_quant.tflite"
+//    private val mLabelPath = "labels_mobilenet_quant_v1_224.txt"
+    // Rock Paper Scissors Model and Labels
+    private val mModelPath = "mobilenet_v2_rps2.tflite"
+    private val mLabelPath = "labels_rps.txt"
+
     private var rgbFrameBitmap: Bitmap? = null
 
     /**
