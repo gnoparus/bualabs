@@ -1,2 +1,2 @@
 # BUA Labs
-[bualabs.com](https://www.bualabs.com/) website 
+sample code on [bualabs.com](https://www.bualabs.com/)  
