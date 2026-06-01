@@ -102,7 +102,7 @@ Projects in the `app_android/` directory — open in Android Studio.
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.9+
 - [Jupyter Notebook](https://jupyter.org/) or [JupyterLab](https://jupyterlab.readthedocs.io/)
 - [PyTorch](https://pytorch.org/) + [fastai](https://docs.fast.ai/) (for series 01–30)
 - [TensorFlow](https://www.tensorflow.org/) (for series 28–30 and web demos)
