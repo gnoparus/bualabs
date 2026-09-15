@@ -1,3 +1,5 @@
+
+
 # BUA Labs
 
 > Sample code and notebooks from [bualabs.com](https://www.bualabs.com/) — a Thai AI/ML learning community
@@ -92,7 +94,7 @@ Projects in the `app_android/` directory — open in Android Studio.
 | Project | Description |
 |---------|-------------|
 | [cats_vs_dogs](app_android/cats_vs_dogs) | Binary image classifier: cats vs. dogs |
-| [image_classification](app_android/image_classification) | General image classification |
+| [image_classification](app_android/image_classification) | Camera-based image classification |
 | [object_detection](app_android/object_detection) | On-device object detection |
 | [rps_classification](app_android/rps_classification) | Rock-Paper-Scissors gesture classifier |
 
